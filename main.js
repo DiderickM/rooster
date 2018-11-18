@@ -38,11 +38,12 @@ function chooseclass(){
         valueNew = getCookie("value");
     }
     valueNew = valueNew.split(",");
-    document.write("<ul>");
+    var list = document.getElementById('myList');
     for (i = 0; i < valueNew.length; i++) {
-        document.write("<li>" + valueNew[i] + "</li>");
+        var entry = document.createElement('li');
+        entry.appendChild(document.createTextNode(valueNew[i]));
+        list.appendChild(entry);
     }
-    document.write("</ul>");
 }
 
 function getCookie(cname) {
