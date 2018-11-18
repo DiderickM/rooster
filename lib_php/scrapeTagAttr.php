@@ -26,5 +26,7 @@
         $i++;
     }
 
+    $collectedContent = substr($collectedContent, 0, -1); // Remove the last comma
+
     echo $collectedContent;
 ?>
