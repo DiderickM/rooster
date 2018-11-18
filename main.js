@@ -1,6 +1,7 @@
 var imported = document.createElement('script');
 imported.src = 'JamDrop.js';
 document.head.appendChild(imported);
+var lengthofarray;
 
 var baseurl = "https://publish.gepro-osi.nl/roosters/rooster.php?";
 var url;
