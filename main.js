@@ -46,6 +46,8 @@ function chooseclass(){
         }
         lengthofarray = indexofarray + 1;
     });
+    console.log(allclasses);
+    console.log(allclasses.length);
 }
 
 function getCookie(cname) {

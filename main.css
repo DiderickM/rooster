@@ -1,0 +1,17 @@
+body, main{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+button{
+    margin: .2em;
+    padding: .2em;
+}
