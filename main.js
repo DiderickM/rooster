@@ -4,6 +4,8 @@ document.head.appendChild(imported);
 
 var baseurl = "https://publish.gepro-osi.nl/roosters/rooster.php?";
 var url;
+var schoolcode;
+
 function chooseclasslink(){
     var e = document.getElementById("school");
     var schoolcode = e.options[e.selectedIndex].value;
@@ -14,22 +16,53 @@ function chooseclasslink(){
     if(siteavailable(url) == false){
         alert("De site is nu niet beschikbaar");
     }else{
-        //window.location.href = "class.html";
+        var cookiename = "url=";
+        var cookievar = cookiename.concat("", url);
+        document.cookie = cookievar;
+        window.location.href = "class.html";
     }
     console.log(url);
     console.log(siteavailable(url));
-    /*
-    scrapeTagAttr("https://publish.gepro-osi.nl/roosters/rooster.php?school=368&tabblad=1&type=Leerlingrooster", "option", "value",
-        function(reponse){
-            console.log(response);
-        });
-    */
-   scrapeTextContent("https://publish.gepro-osi.nl/roosters/rooster.php?klassen%5B%5D=HA11&type=Klasrooster&tabblad=1&school=368", function(response){
-       alert(response);
-   });
 }
 
+function chooseclass(){
+    var allclasses = [];
+    var lengthofarray;
+    console.log(getCookie("url"));
+    if(getCookie("url") == null){
+        window.location.href = "index.html";
+    }else{
+        url = getCookie("url");
+    }
 
+    scrapeElementsByTag(url, "option",
+    function(response){
+        var classcount = response.length, prevalue = 0, indexofarray = 0, i;
+        for(i= 4; i < classcount + 4; i = i + 4){
+            allclasses[indexofarray] = response.substring(prevalue, i);
+            var temp = response.substring(prevalue, i);
+            prevalue = i;
+            indexofarray++;
+        }
+        lengthofarray = indexofarray + 1;
+    });
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
 
 function siteavailable(url){
     var request = new XMLHttpRequest();  
