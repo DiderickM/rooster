@@ -1,6 +1,7 @@
 var imported = document.createElement('script');
 imported.src = 'JamDrop.js';
 document.head.appendChild(imported);
+var lengthofarray;
 
 var baseurl = "https://publish.gepro-osi.nl/roosters/rooster.php?";
 var url;
@@ -27,7 +28,6 @@ function chooseclasslink(){
 
 function chooseclass(){
     var allclasses = [];
-    var lengthofarray;
     console.log(getCookie("url"));
     if(getCookie("url") == null){
         window.location.href = "index.html";
@@ -44,7 +44,11 @@ function chooseclass(){
             prevalue = i;
             indexofarray++;
         }
-        lengthofarray = indexofarray + 1;
+        lengthofarray = indexofarray;
+        console.log(lengthofarray);
+        for(var i = 0; i < lengthofarray; i++){
+            document.write(allclasses[i]);
+        }
     });
     console.log(allclasses);
     console.log(allclasses.length);
