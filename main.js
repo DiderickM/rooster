@@ -39,7 +39,7 @@ function chooseclass(){
     }
     valueNew = valueNew.split(",");
     document.write("<ul>");
-    for (int i = 0; i < valueNew.length; i++) {
+    for (i = 0; i < valueNew.length; i++) {
         document.write("<li>" + valueNew[i] + "</li>");
     }
     document.write("</ul>");
