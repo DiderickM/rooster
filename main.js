@@ -9,6 +9,7 @@ var schoolcode;
 function chooseclasslink(){
     var e = document.getElementById("school");
     var schoolcode = e.options[e.selectedIndex].value;
+    
     if(schoolcode == null){
         alert("De school bestaat niet");
     }
@@ -16,36 +17,31 @@ function chooseclasslink(){
     if(siteavailable(url) == false){
         alert("De site is nu niet beschikbaar");
     }else{
-        var cookiename = "url=";
-        var cookievar = cookiename.concat("", url);
-        document.cookie = cookievar;
-        window.location.href = "class.html";
+        scrapeTagAttr("https://publish.gepro-osi.nl/roosters/rooster.php?school=368&tabblad=1&type=Leerlingrooster", "option", "value",
+        function(response){
+            var cookiename = "value=";
+            var cookievar = cookiename.concat("", response);
+            document.cookie = cookievar;
+            window.location.href = "class.html";
+        });
     }
-    console.log(url);
-    console.log(siteavailable(url));
 }
 
 function chooseclass(){
     var allclasses = [];
     var lengthofarray;
-    console.log(getCookie("url"));
-    if(getCookie("url") == null){
+    console.log(getCookie("value"));
+    if(getCookie("value") == null){
         window.location.href = "index.html";
     }else{
-        url = getCookie("url");
+        valueNew = getCookie("value");
     }
-
-    scrapeElementsByTag(url, "option",
-    function(response){
-        var classcount = response.length, prevalue = 0, indexofarray = 0, i;
-        for(i= 4; i < classcount + 4; i = i + 4){
-            allclasses[indexofarray] = response.substring(prevalue, i);
-            var temp = response.substring(prevalue, i);
-            prevalue = i;
-            indexofarray++;
-        }
-        lengthofarray = indexofarray + 1;
-    });
+    valueNew = valueNew.split(",");
+    document.write("<ul>");
+    for (int i = 0; i < valueNew.length; i++) {
+        document.write("<li>" + valueNew[i] + "</li>");
+    }
+    document.write("</ul>");
 }
 
 function getCookie(cname) {
