@@ -1,7 +1,7 @@
 <?php
     //Collect the input.
     $input = $_REQUEST["tagPass"];  
-    $inputSplit = explode(" ", $input); 
+    $inputSplit = explode(" ", base64_decode($input)); 
     
     //Collect the url.
     $url = $inputSplit[0];

@@ -323,6 +323,6 @@ function scrapeTagAttr(url, newTag, attr, func){
     		func(this.responseText);
     	}else{}
 	};
-	xhttp.open("GET", "lib_php/scrapeTagAttr.php?tagPass=" + url + " " + newTag + " " + attr, true);
+	xhttp.open("GET", "lib_php/scrapeTagAttr.php?tagPass=" + btoa(url + " " + newTag + " " + attr), true);
 	xhttp.send();
 }
