@@ -326,3 +326,15 @@ function scrapeTagAttr(url, newTag, attr, func){
 	xhttp.open("GET", "lib_php/scrapeTagAttr.php?tagPass=" + btoa(url + " " + newTag + " " + attr), true);
 	xhttp.send();
 }
+
+//Scrape schedules (custom)
+function scrapeSchedule(url, func){
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState = 4 && this.status == 200) {
+			func(this.responseText);
+		} else{}
+	};
+	xhttp.open("GET", "lib_php/scrapeSchedule.php?tagPass=" + btoa(url), true);
+	xhttp.send();
+}
