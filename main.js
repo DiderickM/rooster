@@ -16,6 +16,7 @@ function chooseclasslink(){
     }
     var url = baseurl.concat("school=", schoolcode);
     document.cookie = "url=" + url;
+    document.cookie = "school=" + schoolcode;
     if(siteavailable(url) == false){
         alert("De site is nu niet beschikbaar");
     }else{
@@ -44,10 +45,23 @@ function chooseclass(){
     valueNew = valueNew.split(",");
     var list = document.getElementById('myList');
     for (i = 0; i < valueNew.length; i++) {
-        var entry = document.createElement('li');
+        var entry = document.createElement("option");
+        entry.setAttribute('value', valueNew[i]);
+        entry.setAttribute('selected', 'selectedIndex');
         entry.appendChild(document.createTextNode(valueNew[i]));
         list.appendChild(entry);
     }
+}
+
+function getclass(){
+    var e = document.getElementById("myList");
+    var klas = e.options[e.selectedIndex].value;
+    console.log(klas);
+    var baseurl = "https://publish.gepro-osi.nl/roosters/rooster.php?";
+    var type = "Klasrooster";
+    var school = getCookie("school");
+    var url = baseurl + "Type=" + type + "&" + "klassen%5B%5D=" + klas + "&" + "school=" + school;
+    
 }
 
 function getCookie(cname) {
