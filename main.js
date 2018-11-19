@@ -32,12 +32,15 @@ function chooseclasslink(){
 function chooseclass(){
     var allclasses = [];
     var lengthofarray;
-    console.log(getCookie("value"));
-    if(getCookie("value") == null || getCookie("url" == null)){
+    console.log(getCookie("value").length);
+    console.log(getCookie("url").length);
+
+    if(getCookie("value").length == 0 || getCookie("url").length == 0){
         window.location.href = "index.html";
     }else{
         valueNew = getCookie("value");
     }
+
     valueNew = valueNew.split(",");
     var list = document.getElementById('myList');
     for (i = 0; i < valueNew.length; i++) {
