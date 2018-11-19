@@ -64,7 +64,8 @@ function getSchedule(){
 
 function processArray(response){
     document.write(response);
-    console.log(response[0][0]);
+    var obj = JSON.parse(response);
+    console.log(obj[1][1]);
 ;}
 
 

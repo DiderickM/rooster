@@ -20,9 +20,9 @@
 
     for ($j = 0; $j < count($result); $j++) {
         $rem = ($j % 5) + 1;
-        $rem = "$rem";
+        $rem = $rem;
         $uur = floor(($j+1) / 5);
-        $uur = "$uur";
+        $uur = $uur;
         $res = preg_replace("/[\r\n]/", " ", $result[$j]);
         $resTotal[$rem][$uur] = seoUrl(strip_tags($res));
     }
