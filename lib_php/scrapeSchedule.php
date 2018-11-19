@@ -25,7 +25,7 @@
         $resTotal[$rem][$uur] = seoUrl(strip_tags($res));
     }
 
-    echo '<pre>'; print_r($resTotal); echo '</pre>';
+    //echo print_r($resTotal);
     function seoUrl($string) {
         //Lower case everything
         $string = strtolower($string);
