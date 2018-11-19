@@ -18,7 +18,7 @@
     for ($j = 0; $j < count($result); $j++) {
         $rem = ($j % 5) + 1;
         $uur = floor(($j+1) / 5);
-        $resTotal[$rem][$uur] = strip_tags($result[$j]);
+        $resTotal[$rem][$uur] = trim(strip_tags($result[$j]));
     }
 
     echo '<pre>'; print_r($resTotal); echo '</pre>';
