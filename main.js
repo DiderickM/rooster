@@ -15,6 +15,7 @@ function chooseclasslink(){
         alert("De school bestaat niet");
     }
     var url = baseurl.concat("school=", schoolcode);
+    document.cookie = "url=" + url;
     if(siteavailable(url) == false){
         alert("De site is nu niet beschikbaar");
     }else{
@@ -32,7 +33,7 @@ function chooseclass(){
     var allclasses = [];
     var lengthofarray;
     console.log(getCookie("value"));
-    if(getCookie("value") == null){
+    if(getCookie("value") == null || getCookie("url" == null)){
         window.location.href = "index.html";
     }else{
         valueNew = getCookie("value");
