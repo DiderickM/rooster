@@ -1,4 +1,7 @@
 <?php
+
+    header('Content-type: application/json');
+
     //Collect the input.
     $url = base64_decode($_GET['tagPass']);
     //Scrape the data
@@ -18,14 +21,15 @@
     for ($j = 0; $j < count($result); $j++) {
         $rem = ($j % 5) + 1;
         $uur = floor(($j+1) / 5);
-<<<<<<< HEAD
         $res = preg_replace("/[\r\n]/", " ", $result[$j]);
-        $resTotal[$rem][$uur] = strip_tags($res);
-=======
-        $resTotal[$rem][$uur] = trim(strip_tags($result[$j]));
->>>>>>> a46197442bd5b0153d9e7cb0acf2a638bd092680
+        $temp = preg_split('/\s+/', $res, -1, PREG_SPLIT_NO_EMPTY);
+        $newRes = '';
+        for ($l = 0; $l < count($temp); $l++) {
+            $newRes .= $temp[$l] . ' ';
+        }
+        $resTotal[$rem][$uur] = strip_tags($newRes);
     }
 
-    echo '<pre>'; print_r($resTotal); echo '</pre>';
+    echo json_encode($resTotal);
 
 ?>
