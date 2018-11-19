@@ -18,7 +18,7 @@ function chooseclasslink(){
     if(siteavailable(url) == false){
         alert("De site is nu niet beschikbaar");
     }else{
-        scrapeTagAttr("https://publish.gepro-osi.nl/roosters/rooster.php?school=368&tabblad=1&type=Leerlingrooster", "option", "value",
+        scrapeTagAttr(url, "option", "value",
         function(response){
             var cookiename = "value=";
             var cookievar = cookiename.concat("", response);
