@@ -15,6 +15,9 @@ function chooseclasslink(){
         alert("De school bestaat niet");
     }
     var url = baseurl.concat("school=", schoolcode);
+    var cookiename = "url=";
+    var cookievar = cookiename.concat("", url);
+    document.cookie = cookievar;
     if(siteavailable(url) == false){
         alert("De site is nu niet beschikbaar");
     }else{
