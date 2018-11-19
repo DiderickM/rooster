@@ -58,12 +58,13 @@ function getSchedule(){
     //console.log(url);
     scrapeSchedule(url, function(response){
         console.log(response);
-        processArray();
+        processArray(response);
     });
 }
 
-function processArray(){
-
+function processArray(response){
+    document.write(response);
+    console.log(response[0][0]);
 ;}
 
 
