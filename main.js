@@ -61,25 +61,10 @@ function getclass(){
     var type = "Klasrooster";
     var school = getCookie("school");
     var url = baseurl + "Type=" + type + "&" + "klassen%5B%5D=" + klas + "&" + "school=" + school;
-<<<<<<< HEAD
     scrapeSchedule(url, 
         function(response) {
             document.write(response);
         });
-=======
-    document.cookie = "url=" + url;
-    window.location.href = "schedule.html"
-}
-
-function getschedule(){
-    var url = getCookie("url");
-    //console.log(url);
-    scrapeSchedule(url, function(response){
-        console.log(response);
-        document.write(response);
-        console.log("OK");
-    });
->>>>>>> 46fa44150331d9749962231dd26f328b2b4b28ad
 }
 
 
