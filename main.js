@@ -53,6 +53,16 @@ function chooseclass(){
     }
 }
 
+function getSchedule(){
+    var url = getCookie("url");
+    //console.log(url);
+    scrapeSchedule(url, function(response){
+        console.log(response);
+        document.write(response);
+
+    });
+}
+
 function getclass(){
     var e = document.getElementById("myList");
     var klas = e.options[e.selectedIndex].value;

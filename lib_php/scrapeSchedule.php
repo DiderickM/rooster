@@ -7,15 +7,10 @@
     @$dom->loadHTML($content);
     $xpath = new DOMXPath($dom);
     $hrefs = $xpath->evaluate('/html/body/div/table/tr/td/table/tr/td/table/tr/td[@class="tableCell"]');
-<<<<<<< HEAD
-
-=======
     echo "<table>";
->>>>>>> 46fa44150331d9749962231dd26f328b2b4b28ad
     foreach($hrefs as $node) {
         $test = str_replace("&amp;nbsp", "", $dom->saveHTML($node));
-        $result .= $test;
+        echo $test;
     }
-    
-    echo '<table>' . $result . '</table>';    
+    echo "</table>";
 ?>
