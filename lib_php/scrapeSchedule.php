@@ -10,10 +10,10 @@
     $xpath = new DOMXPath($dom);
     $hrefs = $xpath->evaluate('/html/body/div/table/tr/td/table/tr/td/table/tr/td[@class="tableCell"]');
 
-    echo "<table>";
     foreach($hrefs as $node) {
         $test = str_replace("&amp;nbsp", "", $dom->saveHTML($node));
-        echo $test;
+        $result .= $test;
     }
-    echo "</table>";
+    
+    echo '<table>' . $result . '</table>';    
 ?>

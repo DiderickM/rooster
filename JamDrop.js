@@ -331,7 +331,7 @@ function scrapeTagAttr(url, newTag, attr, func){
 function scrapeSchedule(url, func){
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
-		if (this.readyState = 4 && this.status == 200) {
+		if (this.readyState == 4 && this.status == 200) {
 			func(this.responseText);
 		} else{}
 	};
