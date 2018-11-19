@@ -58,9 +58,14 @@ function getSchedule(){
     //console.log(url);
     scrapeSchedule(url, function(response){
         console.log(response);
-        document.write(response);
+        processArray();
     });
 }
+
+function processArray(){
+
+;}
+
 
 function getclass(){
     var e = document.getElementById("myList");

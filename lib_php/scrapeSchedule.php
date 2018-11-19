@@ -22,14 +22,22 @@
         $rem = ($j % 5) + 1;
         $uur = floor(($j+1) / 5);
         $res = preg_replace("/[\r\n]/", " ", $result[$j]);
-        $temp = preg_split('/\s+/', $res, -1, PREG_SPLIT_NO_EMPTY);
-        $newRes = '';
-        for ($l = 0; $l < count($temp); $l++) {
-            $newRes .= $temp[$l] . ' ';
-        }
-        $resTotal[$rem][$uur] = strip_tags($newRes);
+        $resTotal[$rem][$uur] = seoUrl(strip_tags($res));
+    }
+
+    echo '<pre>'; print_r($resTotal); echo '</pre>';
+    function seoUrl($string) {
+        //Lower case everything
+        $string = strtolower($string);
+        //Make alphanumeric (removes all other characters)
+        $string = preg_replace("/[^a-z0-9_\s-]/", "", $string);
+        //Clean up multiple dashes or whitespaces
+        $string = preg_replace("/[\s-]+/", " ", $string);
+        //Convert whitespaces and underscore to dash
+        $string = preg_replace("/[\s_]/", ",", $string);
+        $string = substr($string, 1, -1); // Remove the last comma
+        return $string;
     }
 
     echo json_encode($resTotal);
-
 ?>
