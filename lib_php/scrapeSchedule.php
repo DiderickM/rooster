@@ -7,15 +7,20 @@
     @$dom->loadHTML($content);
     $xpath = new DOMXPath($dom);
     $hrefs = $xpath->evaluate('/html/body/div/table/tr/td/table/tr/td/table/tr/td[@class="tableCell"]');
-<<<<<<< HEAD
+    $result = [];
+    $i = 0;
 
-=======
-    echo "<table>";
->>>>>>> 46fa44150331d9749962231dd26f328b2b4b28ad
     foreach($hrefs as $node) {
         $test = str_replace("&amp;nbsp", "", $dom->saveHTML($node));
-        $result .= $test;
+        $result[$i++] = $test;
     }
-    
-    echo '<table>' . $result . '</table>';    
+
+    for ($j = 0; $j < count($result); $j++) {
+        $rem = ($j % 5) + 1;
+        $uur = floor(($j+1) / 5);
+        $resTotal[$rem][$uur] = $result[$j];
+    }
+
+    echo '<pre>'; print_r($resTotal); echo '</pre>';
+
 ?>
