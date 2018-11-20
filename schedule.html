@@ -5,19 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+
     <link rel="stylesheet" type="text/css" media="screen" href="schedule.css"/>
     <script src="main.js"></script>
-
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+    <script>
+    window.onload = function(){
+        getSchedule();
+        console.log('before');
+        setTimeout(function(){
+            console.log('after');
+        },500);
+        loadschedule();
+    }
+    </script>
 </head>
 <body>
     <div class="cd-schedule loading">
         <div class="timeline">
             <ul>
-                <li><span>09:00</span></li>
-                <li><span>09:30</span></li>
+                <li><span>08:00</span></li>
+                <li><span>08:30</span></li>
+                <li><span>9:00</span></li>
+                <li><span>9:30</span></li>
                 <li><span>10:00</span></li>
                 <li><span>10:30</span></li>
                 <li><span>11:00</span></li>
@@ -33,8 +42,6 @@
                 <li><span>16:00</span></li>
                 <li><span>16:30</span></li>
                 <li><span>17:00</span></li>
-                <li><span>17:30</span></li>
-                <li><span>18:00</span></li>
             </ul>
         </div> <!-- .timeline -->
     
@@ -43,6 +50,8 @@
                 <li class="events-group">
                     <div class="top-info"><span>Monday</span></div>
                     <ul id="ma">
+                            <li class="single-event" data-start="09:15" data-end="10:05" data-event="event-1" selected="selectedIndex"><a href="#0"><span class="event-date">08:25 - 09:25</span><em class="event-name">pau</em></a></li>
+                            <li class="single-event" data-start="14:35" data-end="15:25" data-event="event-1" selected="selectedIndex"><a href="#0"><em class="event-name">d206</em></a></li>
                     </ul>
                 </li>
     
@@ -92,16 +101,11 @@
     
         <div class="cover-layer"></div>
     </div> <!-- .cd-schedule -->
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
     <script>
         if( !window.jQuery ) document.write('<script src="js/jquery-3.0.0.min.js"><\/script>');
     </script>
-    <script src="schedule.js"></script> <!-- Resource jQuery -->
 </body>
 </html>
-<script>
-    window.onload = function(){
-        getSchedule();
-    }
-</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+<script src="schedule.js"></script> <!-- Resource jQuery -->
