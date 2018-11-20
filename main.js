@@ -75,7 +75,7 @@ function processArray(response){
         console.log(a + 1);
         console.log("+------+");
         for(var i = 0; i < 8; i++){
-            if(obj[1][i] != false){
+            if(obj[a + 1][i] != false){
                 console.log(i);
                 
                 var time = [
@@ -111,7 +111,7 @@ function processArray(response){
                 varelement.appendChild(varelementtwo);
                 entry.appendChild(varelement);
                 list.appendChild(entry);
-            }else{console.log("false");};
+            }else{console.log("false");}
         }
     };
 
