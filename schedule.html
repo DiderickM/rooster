@@ -11,11 +11,6 @@
     <script>
     window.onload = function(){
         getSchedule();
-        console.log('before');
-        setTimeout(function(){
-            console.log('after');
-        },500);
-        loadschedule();
     }
     </script>
 </head>
@@ -50,8 +45,6 @@
                 <li class="events-group">
                     <div class="top-info"><span>Monday</span></div>
                     <ul id="ma">
-                            <li class="single-event" data-start="09:15" data-end="10:05" data-event="event-1" selected="selectedIndex"><a href="#0"><span class="event-date">08:25 - 09:25</span><em class="event-name">pau</em></a></li>
-                            <li class="single-event" data-start="14:35" data-end="15:25" data-event="event-1" selected="selectedIndex"><a href="#0"><em class="event-name">d206</em></a></li>
                     </ul>
                 </li>
     
@@ -101,11 +94,11 @@
     
         <div class="cover-layer"></div>
     </div> <!-- .cd-schedule -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
     <script>
-        if( !window.jQuery ) document.write('<script src="js/jquery-3.0.0.min.js"><\/script>');
+        if( !window.jQuery ) document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"><\/script>');
     </script>
 </body>
 </html>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 <script src="schedule.js"></script> <!-- Resource jQuery -->

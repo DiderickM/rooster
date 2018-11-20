@@ -68,51 +68,54 @@ function processArray(response){
     
     var obj = JSON.parse(response);
     //console.log(obj[1][1]);
-
+    console.log(obj[3][7]);
     //dit moet straks in een lus om alle 'standaard' vakjes te laden
-    
-    for(var i = 0; i < 8; i++){
-        console.log(i);
-        if(obj[1][i] != false){
-
-            var time = [
-                ["08:25", "09:25"],
-                ["09:15", "10:05"],
-                ["10:25", "11:15"],
-                ["11:15", "12:05"],
-                ["12:35", "13:25"],
-                ["13:25", "14:15"],
-                ["14:35", "15:25"],
-                ["15:25", "16:15"]
-            ];
-
-            var list = document.getElementById(day[0]);
-            var deelen = obj[1][i].split(",");
-            var entry = document.createElement("li");
-            entry.setAttribute('class', 'single-event');
-            entry.setAttribute('data-start', time[i][0]);
-            entry.setAttribute('data-end', time[i][1]);
-            entry.setAttribute('data-event', 'event-1');
-            entry.setAttribute('selected', 'selectedIndex');
-        
-            varelement = document.createElement("a");
-            varelement.setAttribute("href", '#0');
-        
-            varelementtwo = document.createElement('em');
-            varelementtwo.setAttribute('class', 'event-name');
-            varelementtwo.appendChild(document.createTextNode(deelen[2]));
-        
-            varelementthree= document.createElement('span');
-            varelementthree.setAttribute('class', 'event-date');
-            varelementthree.appendChild(document.createTextNode(time[0][0] + ' - ' + time[0][1]));
-        
-            varelement.appendChild(varelementthree);
-            varelement.appendChild(varelementtwo);
-            entry.appendChild(varelement);
-            list.appendChild(entry);
+    for(var a = 0; a < 5; a++){
+        console.log("+------+");
+        console.log(a + 1);
+        console.log("+------+");
+        for(var i = 0; i < 8; i++){
+            if(obj[1][i] != false){
+                console.log(i);
+                
+                var time = [
+                    ["08:25", "09:15"],
+                    ["09:15", "10:05"],
+                    ["10:25", "11:15"],
+                    ["11:15", "12:05"],
+                    ["12:35", "13:25"],
+                    ["13:25", "14:15"],
+                    ["14:35", "15:25"],
+                    ["15:25", "16:15"]
+                ];
+                
+                var list = document.getElementById(day[a]);
+                var dagdata = a + 1;
+                var uurdata = i;
+                var data = obj[dagdata][uurdata];
+                console.log(data);
+                var entry = document.createElement("li");
+                entry.setAttribute('class', 'single-event');
+                entry.setAttribute('data-start', time[i][0]);
+                entry.setAttribute('data-end', time[i][1]);
+                entry.setAttribute('data-event', 'event-1');
+                entry.setAttribute('selected', 'selectedIndex');
+                
+                varelement = document.createElement("a");
+                varelement.setAttribute("href", '#0');
+                
+                varelementtwo = document.createElement('em');
+                varelementtwo.setAttribute('class', 'event-name');
+                varelementtwo.appendChild(document.createTextNode(data));
+                
+                varelement.appendChild(varelementtwo);
+                entry.appendChild(varelement);
+                list.appendChild(entry);
+            }else{console.log("false");};
         }
-    }
+    };
 
+    loadschedule();
     /*
     var list = document.getElementById(day[0]);
     var deelen = obj[1][1].split(",");
